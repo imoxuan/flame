@@ -54,8 +54,16 @@ export default {
     }
   },
   methods: {
+    loginSuccess () {
+      this.$router.push({ path: '/' })
+    },
     handleSubmit () {
-
+      const { form: { validateFields } } = this
+      validateFields({ first: true, force: true }, (error, values) => {
+        if (!error) {
+          this.loginSuccess()
+        }
+      })
     }
   }
 }
