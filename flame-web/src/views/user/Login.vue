@@ -64,7 +64,7 @@ export default {
 <style lang="less" scoped>
 .main {
   background-color: #f5f5f5;
-  padding-top: 20px;
+  padding-top: 40px;
   width: 300px;
   margin: 0 auto;
 }
