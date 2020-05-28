@@ -1,17 +1,71 @@
 <template>
   <div class="main">
-    登录页面
+    <a-form :form="form" class="login-form" @submit.prevent="handleSubmit">
+      <a-form-item>
+        <a-input
+          v-decorator="[
+            'userName',
+            { rules: [{ required: true, message: '请输入帐户名!' }] },
+          ]"
+          placeholder="帐户名"
+          size="large">
+          <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)" />
+        </a-input>
+      </a-form-item>
+      <a-form-item>
+        <a-input
+          v-decorator="[
+            'password',
+            { rules: [{ required: true, message: '请输入密码!' }] },
+          ]"
+          type="password"
+          placeholder="密码"
+          size="large"
+        >
+          <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)" />
+        </a-input>
+      </a-form-item>
+      <!--<a-form-item>
+        <a-checkbox
+          v-decorator="[
+            'remember',
+            {
+              valuePropName: 'checked',
+              initialValue: true,
+            },
+          ]"
+        >Remember me
+        </a-checkbox>
+      </a-form-item>-->
+      <a-form-item>
+        <a-button type="primary" html-type="submit" block size="large">登 录</a-button>
+      </a-form-item>
+    </a-form>
+
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Login'
+  name: 'Login',
+  data () {
+    return {
+      form: this.$form.createForm(this)
+    }
+  },
+  methods: {
+    handleSubmit () {
+
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .main {
-  background-color: #eee;
+  background-color: #f5f5f5;
+  padding-top: 20px;
+  width: 300px;
+  margin: 0 auto;
 }
 </style>

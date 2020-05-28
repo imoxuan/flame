@@ -9,6 +9,7 @@ const routes = [
   {
     path: '/user',
     component: UserLayout,
+    redirect: '/user/login',
     children: [
       {
         path: '/user/login',
@@ -31,6 +32,15 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/404',
+    component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
+  },
+  {
+    path: '*',
+    redirect: '/404',
+    hidden: true
   }
 ]
 

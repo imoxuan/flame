@@ -1,12 +1,13 @@
 import Vue from 'vue'
-import { Button } from 'ant-design-vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// 引入 ant-design-vue 组件
+import '@/core/lazy_use'
+// 全局样式
+import '@/assets/style/global.less'
 
 Vue.config.productionTip = false
-
-Vue.use(Button)
 
 new Vue({
   router,
