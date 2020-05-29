@@ -1,8 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
 import UserLayout from '@/layouts/UserLayout'
 import BasicLayout from '@/layouts/BasicLayout'
+import Home from '@/views/Home'
+
+// hack router push callback
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push (location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
+}
 
 Vue.use(VueRouter)
 
@@ -10,7 +17,14 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: BasicLayout
+    component: BasicLayout,
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: Home
+      }
+    ]
   },
   {
     path: '/user',
@@ -24,11 +38,6 @@ const routes = [
           import(/* webpackChunkName: "user" */ '../views/user/Login')
       }
     ]
-  },
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
   },
   {
     path: '/about',

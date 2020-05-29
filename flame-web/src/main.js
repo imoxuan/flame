@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 // 引入 ant-design-vue 组件
 import '@/core/lazy_use'
+// 权限控制
+import './permission'
 // 全局样式
 import '@/assets/style/global.less'
 

@@ -46,34 +46,37 @@
 </template>
 
 <script>
-export default {
-  name: 'Login',
-  data () {
-    return {
-      form: this.$form.createForm(this)
-    }
-  },
-  methods: {
-    loginSuccess () {
-      this.$router.push({ path: '/' })
+  import storage from 'store'
+  export default {
+    name: 'Login',
+    data () {
+      return {
+        form: this.$form.createForm(this)
+      }
     },
-    handleSubmit () {
-      const { form: { validateFields } } = this
-      validateFields({ first: true, force: true }, (error, values) => {
-        if (!error) {
-          this.loginSuccess()
-        }
-      })
+    methods: {
+      loginSuccess () {
+        console.log('sssssssssss')
+        storage.set('token', 'sissies', 7 * 24 * 60 * 60 * 1000)
+        this.$router.push({ path: '/home' })
+      },
+      handleSubmit () {
+        const { form: { validateFields } } = this
+        validateFields({ first: true, force: true }, (error, values) => {
+          if (!error) {
+            this.loginSuccess()
+          }
+        })
+      }
     }
   }
-}
 </script>
 
 <style lang="less" scoped>
-.main {
-  background-color: #f5f5f5;
-  padding-top: 40px;
-  width: 300px;
-  margin: 0 auto;
-}
+  .main {
+    background-color: #f5f5f5;
+    padding-top: 40px;
+    width: 300px;
+    margin: 0 auto;
+  }
 </style>

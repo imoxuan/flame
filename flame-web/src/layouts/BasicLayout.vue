@@ -1,8 +1,6 @@
 <template>
   <div>
     <router-view/>
-
-    后台
   </div>
 </template>
 
