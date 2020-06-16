@@ -28,3 +28,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/flame-system/src/test/java/

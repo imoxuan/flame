@@ -1,6 +1,7 @@
 package net.moxuan.system;
 
 import com.baidu.fsg.uid.UidGenerator;
+import junit.framework.TestCase;
 import net.moxuan.system.mapper.SysOrganizationMapper;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,7 +18,7 @@ import javax.annotation.Resource;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SimpleTest {
+public class SimpleTest extends TestCase {
 
     @Resource
     private SysOrganizationMapper sysOrgMapper;

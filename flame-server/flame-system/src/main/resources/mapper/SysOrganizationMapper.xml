@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.moxuan.system.mapper.SysOrganizationMapper">
     <resultMap id="SysOrganization" type="net.moxuan.system.entity.SysOrganization">
-        <result column="id" property="id" jdbcType="BIGINT"/>
+        <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="en_name" property="enName" jdbcType="VARCHAR"/>
         <result column="short_name" property="shortName" jdbcType="VARCHAR"/>

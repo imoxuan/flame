@@ -1,34 +1,21 @@
 package net.moxuan.system.entity;
 
-import java.io.Serializable;
-import java.util.Date;
+import net.moxuan.common.BaseEntity;
 
 /**
  * @author: moxuan
- * @description:
+ * @description: 集团类
  */
-public class SysOrganization implements Serializable {
+public class SysOrganization extends BaseEntity {
 
-    private static final long serialVersionUID = -6929741703922423321L;
+    private static final long serialVersionUID = -8166945473936393885L;
 
-    private Long id;
     private String name;
     private String enName;
     private String shortName;
     private String code;
     private int sortNo;
     private Boolean enable;
-    private Boolean deleted;
-    private Date gmtCreate;
-    private Date gmtModified;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -76,30 +63,6 @@ public class SysOrganization implements Serializable {
 
     public void setEnable(Boolean enable) {
         this.enable = enable;
-    }
-
-    public Boolean getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(Boolean deleted) {
-        this.deleted = deleted;
-    }
-
-    public Date getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public void setGmtCreate(Date gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-
-    public Date getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Date gmtModified) {
-        this.gmtModified = gmtModified;
     }
 
 }
