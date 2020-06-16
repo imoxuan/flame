@@ -1,11 +1,12 @@
-import router from './router'
-import storage from 'store'
+// import router from './router'
+// import storage from 'store'
 import NProgress from 'nprogress'
 
 NProgress.configure({ showSpinner: false })
 
-const whiteList = ['login', 'register', 'registerResult']
+// const whiteList = ['login', 'register', 'registerResult']
 
+/**
 router.beforeEach((to, from, next) => {
   if (storage.get('token')) {
     NProgress.start()
@@ -28,4 +29,4 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach(() => {
   NProgress.done() // finish progress bar
-})
+}) */

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.moxuan.system.mapper.SysOrganizationMapper">
+    <resultMap id="SysOrganization" type="net.moxuan.system.entity.SysOrganization">
+        <result column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="en_name" property="enName" jdbcType="VARCHAR"/>
+        <result column="short_name" property="shortName" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="sort_no" property="sortNo" jdbcType="TINYINT"/>
+        <result column="is_enable" property="enable" jdbcType="TINYINT"/>
+        <result column="is_deleted" property="deleted" jdbcType="TINYINT"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="total" resultType="java.lang.Integer">
+        select count(*) from sys_organization
+    </select>
+</mapper>

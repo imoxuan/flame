@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import UserLayout from '@/layouts/UserLayout'
 import BasicLayout from '@/layouts/BasicLayout'
 import Home from '@/views/Home'
+import Org from '@/views/system/org/index'
 
 // hack router push callback
 const originalPush = VueRouter.prototype.push
@@ -23,6 +24,11 @@ const routes = [
         path: '/home',
         name: 'home',
         component: Home
+      },
+      {
+        path: '/org',
+        name: 'org',
+        component: Org
       }
     ]
   },
