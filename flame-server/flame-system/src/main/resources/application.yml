@@ -1,5 +1,9 @@
 server:
-  port: 8081
+  port: 8099
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: utf-8
 
 # 数据源
 spring:

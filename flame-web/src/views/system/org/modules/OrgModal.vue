@@ -3,21 +3,22 @@
     :title="title"
     :visible="visible"
     :maskClosable="maskClosable"
+    :confirmLoading="confirmLoading"
     @ok="handleOk"
     @cancel="handleCancel">
-    <a-spin :spinning="spinning">
+    <a-spin :spinning="confirmLoading">
       <a-form :form="form">
         <a-form-item label="集团名称" :labelCol="labelCol" :wrapperCol="wrapperCol">
-          <a-input v-decorator="['orgName', validatorRules.orgName]" v-focus/>
+          <a-input v-decorator="['name', validatorRules.name]" v-focus/>
         </a-form-item>
-        <a-form-item label="外文名称" :labelCol="labelCol" :wrapperCol="wrapperCol">
-          <a-input v-decorator="['orgEnName', validatorRules.orgEnName]"/>
+        <a-form-item label="英文名称" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="['enName', validatorRules.enName]"/>
         </a-form-item>
         <a-form-item label="集团简称" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="['shortName', validatorRules.shortName]"/>
         </a-form-item>
         <a-form-item label="集团编码" :labelCol="labelCol" :wrapperCol="wrapperCol">
-          <a-input v-decorator="['orgCode', validatorRules.orgCode]"/>
+          <a-input v-decorator="['code', validatorRules.code]"/>
         </a-form-item>
       </a-form>
     </a-spin>
@@ -31,7 +32,7 @@
       return {
         form: this.$form.createForm(this),
         title: '操作',
-        spinning: false,
+        confirmLoading: false,
         visible: false,
         maskClosable: false,
         labelCol: {
@@ -43,27 +44,27 @@
           sm: { span: 16 }
         },
         validatorRules: {
-          orgName: {
+          name: {
             rules: [
               {
                 required: true,
                 message: '请输入集团名称'
               },
               {
-                max: 4,
-                message: '长度超出 4 个字符'
+                max: 30,
+                message: '长度超出 30 个字符'
               }
             ]
           },
-          orgEnName: {
+          enName: {
             rules: [
               {
                 required: false,
-                message: '请输入外文名称'
+                message: '请输入英文名称'
               },
               {
-                max: 4,
-                message: '长度超出 4 个字符'
+                max: 60,
+                message: '长度超出 60 个字符'
               }
             ]
           },
@@ -74,20 +75,20 @@
                 message: '请输入集团简称'
               },
               {
-                max: 4,
-                message: '长度超出 4 个字符'
+                max: 16,
+                message: '长度超出 16 个字符'
               }
             ]
           },
-          orgCode: {
+          code: {
             rules: [
               {
                 required: true,
                 message: '请输入集团编码'
               },
               {
-                max: 4,
-                message: '长度超出 4 个字符'
+                max: 10,
+                message: '长度超出 10 个字符'
               }
             ]
           }
@@ -107,8 +108,16 @@
         this.visible = false
       },
       handleOk () {
+        const that = this
         this.form.validateFields((err, values) => {
           if (!err) {
+            that.confirmLoading = true
+            const formData = Object.assign({}, values)
+            that.$api.org.add(formData).then((res) => {
+              console.log(res)
+            }).finally(() => {
+              that.close()
+            })
           }
         })
       },

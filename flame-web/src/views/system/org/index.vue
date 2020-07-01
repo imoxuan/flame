@@ -1,8 +1,7 @@
 <template>
   <a-card :bordered="false">
     <div class="table-operator">
-      <a-button type="primary" icon="plus" @click="handleAdd">新建</a-button>
-      <a-input v-focus/>
+      <a-button type="primary" icon="plus" @click="handleAdd">新增</a-button>
     </div>
     <org-modal ref="modalForm"/>
   </a-card>
@@ -23,12 +22,14 @@
     methods: {
       handleAdd () {
         this.$refs.modalForm.add()
-        this.$refs.modalForm.title = '新建'
+        this.$refs.modalForm.title = '新增'
       }
     }
   }
 </script>
 
 <style scoped>
-
+#main {
+  background-color: pink;
+}
 </style>

@@ -1,6 +1,4 @@
-package net.moxuan.system.entity;
-
-import net.moxuan.common.BaseEntity;
+package net.moxuan.entity;
 
 /**
  * @author: moxuan
@@ -14,8 +12,8 @@ public class SysOrganization extends BaseEntity {
     private String enName;
     private String shortName;
     private String code;
-    private int sortNo;
-    private Boolean enable;
+    private int sortNo = 1;
+    private Boolean enable = true;
 
     public String getName() {
         return name;

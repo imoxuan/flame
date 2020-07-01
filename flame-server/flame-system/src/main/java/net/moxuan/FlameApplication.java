@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description: Springboot 启动类
  */
 @SpringBootApplication
-@MapperScan({"net.moxuan.system.mapper", "com.baidu.fsg.uid.worker.dao"})
+@MapperScan({"net.moxuan.mapper", "com.baidu.fsg.uid.worker.dao"})
 public class FlameApplication {
     public static void main(String[] args) {
         SpringApplication.run(FlameApplication.class, args);

@@ -1,4 +1,5 @@
 const path = require('path')
+const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin")
 
 function resolve (dir) {
   return path.join(__dirname, dir)
@@ -6,8 +7,12 @@ function resolve (dir) {
 
 // vue.config.js
 const vueConfig = {
+  publicPath: '/',
   chainWebpack: (config) => {
+    // 添加别名
     config.resolve.alias.set('@$', resolve('src'))
+    // 修改HMR
+    config.resolve.symlinks(true)
 
     const svgRule = config.module.rule('svg')
     svgRule.uses.clear()
@@ -38,10 +43,17 @@ const vueConfig = {
     // development server port 8000
     port: 8088,
     proxy: {
-       '/api': {
-         target: 'https://192.168.42.124',
+       '/flame': {
+         target: 'http://localhost:8099',
+         // 是否启用 websockets
          ws: false,
-         changeOrigin: true
+         // 使用的是http协议则设置为false，https协议则设置为true
+         secure: false,
+         // 开启代理：在本地会创建一个虚拟服务端，然后发送请求的数据，并同时接收请求的数据，这样客户端端和服务端进行数据的交互就不会有跨域问题
+         changeOrigin: true,
+         pathRewrite: {
+           '^/flame': ''
+         }
        }
      }
   },
@@ -49,7 +61,10 @@ const vueConfig = {
   // disable source map in production
   productionSourceMap: false,
   // babel-loader no-ignore node_modules/*
-  transpileDependencies: []
+  transpileDependencies: [],
+  configureWebpack: {
+    plugins: [new DuplicatePackageCheckerPlugin()]
+  }
 }
 
 module.exports = vueConfig

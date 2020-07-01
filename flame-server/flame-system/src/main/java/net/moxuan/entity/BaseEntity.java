@@ -1,4 +1,4 @@
-package net.moxuan.common;
+package net.moxuan.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,7 +12,7 @@ public class BaseEntity implements Serializable {
     private static final long serialVersionUID = 229976649864186420L;
 
     private Long id;
-    private Boolean deleted;
+    private Boolean deleted = false;
     private Date gmtCreate;
     private Date gmtModified;
 
