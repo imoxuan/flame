@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="net.moxuan.mapper.SysOrganizationMapper">
-    <resultMap id="SysOrganization" type="net.moxuan.entity.SysOrganization">
-        <id column="id" property="id" jdbcType="BIGINT"/>
-        <result column="name" property="name" jdbcType="VARCHAR"/>
-        <result column="en_name" property="enName" jdbcType="VARCHAR"/>
-        <result column="short_name" property="shortName" jdbcType="VARCHAR"/>
-        <result column="code" property="code" jdbcType="VARCHAR"/>
-        <result column="sort_no" property="sortNo" jdbcType="TINYINT"/>
-        <result column="is_enable" property="enable" jdbcType="TINYINT"/>
-        <result column="is_deleted" property="deleted" jdbcType="TINYINT"/>
-        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
-        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+<mapper namespace="net.moxuan.system.mapper.SysOrganizationMapper">
+    <resultMap id="sysOrganization" type="net.moxuan.system.entity.SysOrganization">
+      <result column="id" property="id" jdbcType="BIGINT"/>
+      <result column="name" property="name" jdbcType="VARCHAR"/>
+      <result column="en_name" property="enName" jdbcType="VARCHAR"/>
+      <result column="short_name" property="shortName" jdbcType="VARCHAR"/>
+      <result column="code" property="code" jdbcType="VARCHAR"/>
+      <result column="sort_no" property="sortNo" jdbcType="TINYINT"/>
+      <result column="is_enabled" property="enabled" jdbcType="TINYINT"/>
+      <result column="is_deleted" property="deleted" jdbcType="TINYINT"/>
+      <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+      <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <insert id="save" parameterType="net.moxuan.entity.SysOrganization">
+    <insert id="save" parameterType="net.moxuan.system.entity.SysOrganization">
         insert into sys_organization
         (
          id,
@@ -23,7 +23,7 @@
          short_name,
          code,
          sort_no,
-         is_enable,
+         is_enabled,
          is_deleted,
          gmt_create,
          gmt_modified
@@ -35,12 +35,20 @@
           #{shortName},
           #{code},
           #{sortNo},
-          #{enable},
+          #{enabled},
           #{deleted},
           #{gmtCreate},
           #{gmtModified}
         )
     </insert>
+    <delete id="deleteBatch">
+        update sys_organization
+        set is_deleted = 1
+        where id in
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
 
     <select id="queryOrgByCode" resultType="java.lang.Integer">
         select count(*) from sys_organization
@@ -54,6 +62,10 @@
 
     <select id="total" resultType="java.lang.Integer">
         select count(*) from sys_organization
+    </select>
+
+    <select id="queryAll" resultType="net.moxuan.system.entity.SysOrganization">
+        select * from sys_organization where is_deleted = 0 order by sort_no,name
     </select>
 
 </mapper>

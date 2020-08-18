@@ -1,19 +1,31 @@
-package net.moxuan.entity;
+package net.moxuan.system.entity;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+import net.moxuan.common.BaseEntity;
+
+import javax.validation.constraints.NotBlank;
 
 /**
  * @author: moxuan
  * @description: 集团类
  */
+@TableName(value = "sys_organization", resultMap = "sysOrganization")
 public class SysOrganization extends BaseEntity {
 
     private static final long serialVersionUID = -8166945473936393885L;
 
+    @NotBlank(message = "机构名称为空")
     private String name;
     private String enName;
     private String shortName;
+
+    @NotBlank(message = "机构编码为空")
     private String code;
-    private int sortNo = 1;
-    private Boolean enable = true;
+    private Integer sortNo;
+
+    @TableField(value = "is_enabled")
+    private Boolean enabled;
 
     public String getName() {
         return name;
@@ -47,20 +59,24 @@ public class SysOrganization extends BaseEntity {
         this.code = code;
     }
 
-    public int getSortNo() {
+    public Integer getSortNo() {
         return sortNo;
     }
 
-    public void setSortNo(int sortNo) {
+    public void setSortNo(Integer sortNo) {
         this.sortNo = sortNo;
     }
 
-    public Boolean getEnable() {
-        return enable;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

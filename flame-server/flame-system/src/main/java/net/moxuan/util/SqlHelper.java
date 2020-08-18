@@ -1,4 +1,4 @@
-package net.moxuan.utils;
+package net.moxuan.util;
 
 /**
  * @author: moxuan
