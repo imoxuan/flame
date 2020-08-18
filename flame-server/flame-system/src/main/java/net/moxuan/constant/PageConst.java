@@ -11,7 +11,7 @@ public interface PageConst {
     String DEFAULT_PAGE_NO = "1";
 
     /**
-     *  默认显示条数
+     *  默认显示条数git
      */
     String DEFAULT_PAGE_SIZE = "2";
 }

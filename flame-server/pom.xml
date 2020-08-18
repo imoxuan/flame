@@ -4,7 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>flame-system</module>
-        <module>uid-generator</module>
         <module>flame-common</module>
     </modules>
     <parent>
