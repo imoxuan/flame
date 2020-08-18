@@ -7,7 +7,7 @@
           <a-sub-menu key="sub1">
             <span slot="title"><a-icon type="apartment" /><span>组织结构设置</span></span>
             <a-menu-item key="2">
-              <router-link to="/org">集团管理</router-link>
+              <router-link to="/org">机构管理</router-link>
             </a-menu-item>
             <a-menu-item key="3">
               <router-link to="/home">单位管理</router-link>
