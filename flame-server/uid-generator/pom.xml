@@ -11,8 +11,18 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>uid-generator</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>uid-generator-dd</name>
+    <name>uid-generator</name>
     <description>uid-generator</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
