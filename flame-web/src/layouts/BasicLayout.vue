@@ -10,7 +10,7 @@
               <router-link to="/org">机构管理</router-link>
             </a-menu-item>
             <a-menu-item key="3">
-              <router-link to="/home">单位管理</router-link>
+              <router-link to="/dept">部门管理</router-link>
             </a-menu-item>
             <a-menu-item key="4">
               Bill

@@ -15,16 +15,6 @@ public class ResultBean<T> implements Serializable {
 
     public static final String SUCCESS = "00000";
 
-    /*public static final int NO_LOGIN = -1;
-
-    public static final int SUCCESS = 0;
-
-    public static final int CHECK_FAIL = 1;
-
-    public static final int NO_PERMISSION = 2;
-
-    public static final int UNKNOWN_EXCEPTION = -99;*/
-
     /**
      * 返回的信息(主要出错的时候使用)
      */
@@ -75,8 +65,6 @@ public class ResultBean<T> implements Serializable {
 
     public ResultBean(Throwable e) {
         super();
-        /*this.msg = e.toString();
-        this.code = e.get*/
     }
 
     @Override

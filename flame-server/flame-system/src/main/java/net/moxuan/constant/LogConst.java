@@ -1,27 +1,47 @@
 package net.moxuan.constant;
 
 /**
- *  日志注解里面的常量，自己增加即可
- *
- * @author  晓风轻 https://github.com/xwjie/PLMCodeTemplate
+ * @author moxuan
  */
 public interface LogConst {
-    /**
-     *  操作
-     *  为了节省日志文件大小，这些常量可以使用单字母代替
-     */
-    String ACTION_ADD = "add";
-
-    String ACTION_DELETE = "del";
-
-    String ACTION_UPDATE = "update";
-
-    String ACTION_QUERY= "query";
 
     /**
-     *  对象类型
+     * 系统日志类型： 登录
      */
-    String ITEM_TYPE_CONFIG = "config";
+    int LOG_TYPE_LOGIN = 1;
 
+    /**
+     * 系统日志类型： 操作
+     */
+    int LOG_TYPE_OPERATION = 2;
 
+    /**
+     * 系统日志类型：定时任务
+     */
+    int LOG_TYPE_CRON_JOB = 3;
+
+    /**
+     * 操作类型：添加
+     */
+    int ACTION_TYPE_ADD = 1;
+    /**
+     * 操作类型：更新
+     */
+    int ACTION_TYPE_UPDATE = 2;
+    /**
+     * 操作类型：删除
+     */
+    int ACTION_TYPE_DELETE = 3;
+    /**
+     * 操作类型：查询
+     */
+    int ACTION_TYPE_QUERY = 4;
+    /**
+     * 操作类型：导入
+     */
+    int ACTION_TYPE_IMPORT = 5;
+    /**
+     * 操作类型：导出
+     */
+    int ACTION_TYPE_EXPORT = 6;
 }

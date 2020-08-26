@@ -1,7 +1,6 @@
 package net.moxuan.system.service;
 
 import net.moxuan.system.entity.SysLog;
-import net.moxuan.system.entity.SysOrganization;
 
 /**
  * @author: moxuan

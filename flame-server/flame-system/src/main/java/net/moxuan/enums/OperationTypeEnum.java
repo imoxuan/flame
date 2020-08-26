@@ -4,22 +4,28 @@ package net.moxuan.enums;
  * @author: moxuan
  * @description:
  */
-public enum LogTypeEnum {
-    /**
-     * 错误描述操作日志;1:登录日志;2:定时任务
-     */
-    OPERATION(0, "operate");
+public enum OperationTypeEnum {
 
     /**
-     * 错误码
+     * 登录日志
+     */
+    ADD(1, "添加"),
+    UPDATE(2, "更新"),
+    DELETE(3, "删除"),
+    QUERY(4, "查询"),
+    IMPORT(5, "导入"),
+    EXPORT(6, "导出");
+
+    /**
+     * 编码
      */
     private int code;
     /**
-     * 错误描述
+     * 描述
      */
     private String desc;
 
-    LogTypeEnum(int code, String desc) {
+    OperationTypeEnum(int code, String desc) {
         this.code = code;
         this.desc = desc;
     }

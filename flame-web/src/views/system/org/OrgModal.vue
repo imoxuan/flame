@@ -56,7 +56,6 @@
         this.form.resetFields()
       },
       submitCallback () {
-        console.log('=============')
         this.$emit('ok')
         this.visible = false
       }

@@ -6,6 +6,7 @@ import net.moxuan.system.service.SysLogService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 
 /**
  * @author: moxuan
@@ -19,12 +20,8 @@ public class SysLogServiceImpl implements SysLogService {
 
     @Override
     public long save(SysLog sysLog) {
-        /*long id = uidGenerator.getUID();
-        sysLog.setId(id);
-        sysLog.setGmtCreate(new Date());
-        sysLog.setGmtModified(new Date());
-        sysLogMapper.save(sysLog);
-        return id;*/
-        return 1L;
+        sysLog.setGmtCreate(LocalDateTime.now());
+        sysLog.setGmtModified(LocalDateTime.now());
+        return sysLogMapper.insert(sysLog);
     }
 }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import net.moxuan.annotation.AutoLog;
 import net.moxuan.system.entity.SysLog;
 import net.moxuan.system.service.SysLogService;
-import net.moxuan.util.SpelUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
@@ -13,8 +12,6 @@ import org.slf4j.MDC;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author: moxuan
@@ -35,7 +32,7 @@ public class AutoLogAspect {
         Object result = null;
 
         try {
-            putLogInfo2MDC(pjp);
+            putLogInfo2Mdc(pjp);
             result = pjp.proceed();
 
             // 本次操作用时（毫秒）
@@ -46,7 +43,7 @@ public class AutoLogAspect {
         } catch (Throwable t) {
             logger.error("errorMessage:{}", t.getMessage(), t);
         } finally {
-            clearMDC();
+            clearMdc();
         }
 
         return result;
@@ -65,29 +62,29 @@ public class AutoLogAspect {
         AutoLog autoLog = method.getAnnotation(AutoLog.class);
         if(autoLog != null){
             //注解上的描述,操作日志内容
-            sysLog.setContent(autoLog.value());
+            //sysLog.setContent(autoLog.value());
             sysLog.setLogType(autoLog.logType());
         }
         
-        Object[] args = joinPoint.getArgs();
+        //Object[] args = joinPoint.getArgs();
 
         sysLogService.save(sysLog);
     }
 
-    private void clearMDC() {
+    private void clearMdc() {
         MDC.remove(JSON_KEY);
     }
 
-    private void putLogInfo2MDC(ProceedingJoinPoint pjp) throws JsonProcessingException {
+    private void putLogInfo2Mdc(ProceedingJoinPoint pjp) throws JsonProcessingException {
         // 得到方法上的注解
         MethodSignature signature = (MethodSignature) pjp.getSignature();
 
         AutoLog autoLog = signature.getMethod().getAnnotation(AutoLog.class);
 
 
-        SpelUtil spel = new SpelUtil(pjp);
+       //SpelUtil spel = new SpelUtil(pjp);
 
-        Map<String, Object> map = new HashMap<>(5);
+        //Map<String, Object> map = new HashMap<>(5);
         // 使用单字母而不是全名，是为了节省日志文件大小。
         // TODO 用户
         // map.put("U", UserUtil.getUserIfLogin());

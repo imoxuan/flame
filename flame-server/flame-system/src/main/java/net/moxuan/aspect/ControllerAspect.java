@@ -42,21 +42,11 @@ public class ControllerAspect {
         }
         // 没有登陆
         else if (e instanceof UnloginException) {
-            //result.setMsg("Unlogin");
-            //result.setCode(ResultBean.NO_LOGIN);
         }
         // 没有权限
         else if (e instanceof NoPermissionException) {
-            //result.setMsg("NO PERMISSION");
-            //result.setCode(ResultBean.NO_PERMISSION);
         } else {
             logger.error(pjp.getSignature() + " error {}", e.getMessage());
-            result.setCode("xxxx");
-            result.setMessage("是是是");
-
-            // TODO 未知的异常，应该格外注意，可以发送邮件通知等
-            //result.setMsg(e.toString());
-            //result.setCode(ResultBean.UNKNOWN_EXCEPTION);
         }
         return result;
     }

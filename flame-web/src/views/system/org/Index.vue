@@ -6,21 +6,27 @@
     </div>
     <div class="ant-alert ant-alert-info" style="margin-bottom: 16px;" v-if="selectedRowKeys.length > 0">
       <i class="anticon anticon-info-circle ant-alert-icon"/>已选择&nbsp;<a style="font-weight: 600">{{ selectedRowKeys.length }}</a> 项&nbsp;&nbsp;
-      <a style="margin-left: 24px">清空</a>
+      <a style="margin-left: 24px" @click="onClearSelected">清空</a>
     </div>
 
     <a-table
       size="middle"
       bordered
       rowKey="id"
+      :loading="loading"
       :columns="columns"
-      :pagination="localPagination"
+      :pagination="ipagination"
       :data-source="dataSource"
       :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
+      @change="handleTableChange"
     >
-      <span slot="action" slot-scope="text, record">
+      <template slot="action" slot-scope="text, record">
         <a @click="handleEdit(record)">编辑</a>
-      </span>
+        <a-divider type="vertical" />
+        <a-popconfirm title="确定删除吗?" @confirm="() => handleDelete(record.id)">
+          <a>删除</a>
+        </a-popconfirm>
+      </template>
     </a-table>
     <org-modal v-if="visible" ref="modal" @close="changeModalVisible" @ok="modalFormOk" />
   </a-card>
@@ -29,7 +35,7 @@
 <script>
   import OrgModal from '@/views/system/org/OrgModal'
   import { ListMixin } from '@/mixins/ListMixin'
-  import OrgApi from '@/api/org'
+  import { orgApi } from '@/api/index'
   const columns = [
     {
       title: '名称',
@@ -49,10 +55,12 @@
     },
     {
       title: '排序',
+      width: 100,
       dataIndex: 'sortNo'
     },
     {
       title: '是否启用',
+      width: 100,
       dataIndex: 'isEnable',
       customRender: function (text, record) {
         return record.enabled ? '启用' : '停用'
@@ -60,7 +68,7 @@
     },
     {
       title: '操作',
-      width: 80,
+      width: 100,
       dataIndex: 'action',
       scopedSlots: { customRender: 'action' }
     }
@@ -76,8 +84,9 @@
         visible: false,
         columns: columns,
         url: {
-          list: OrgApi.list,
-          deleteBatch: OrgApi.deleteBatch
+          list: orgApi.list,
+          deleteBatch: orgApi.deleteBatch,
+          delete: orgApi.delete
         }
       }
     }

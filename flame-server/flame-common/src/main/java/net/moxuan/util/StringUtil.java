@@ -18,4 +18,19 @@ public class StringUtil {
         return StringUtils.isBlank(cs);
     }
 
+    /**
+     * 判断字符是否为数字
+     *
+     * @param cs 要检查的字符串
+     * @return boolean
+     */
+    public static boolean isNumber(CharSequence cs) {
+        for (int i = 0; i < cs.length(); i++) {
+            if (!Character.isDigit(cs.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

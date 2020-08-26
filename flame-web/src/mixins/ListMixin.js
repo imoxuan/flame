@@ -1,3 +1,4 @@
+import { filterObj } from '@/utils/util'
 import { deleteAction, getAction } from '@/utils/manage'
 
 export const ListMixin = {
@@ -9,26 +10,27 @@ export const ListMixin = {
       // 数据源
       dataSource: [],
       // 分页参数
-      localPagination: {
+      ipagination: {
         current: 1,
         pageSize: 10,
         pageSizeOptions: ['10', '20', '30'],
         showTotal: (total, range) => {
           return `${range[0]}-${range[1]} 共${total}条`
         },
+        showQuickJumper: true,
         showSizeChanger: true,
         total: 0
       },
       // 排序
-      localSorter: {
-        column: 'gmtModified',
+      isorter: {
+        column: 'createTime',
         order: 'desc'
       },
       // 筛选参数
       filters: {},
       loading: false,
       selectedRowKeys: [],
-      selectedRows: []
+      selectionRows: []
     }
   },
   created () {
@@ -46,8 +48,8 @@ export const ListMixin = {
       this.loading = true
       getAction(this.url.list, params).then((res) => {
         if (res.code === '00000') {
-          this.dataSource = res.data
-          this.localPagination.total = res.data.length
+          this.dataSource = res.data.records
+          this.ipagination.total = res.data.total
         } else {
           this.$message.warning(res.message)
         }
@@ -55,11 +57,11 @@ export const ListMixin = {
       })
     },
     getQueryParams () {
-      // TODO 过滤为空的
-      return Object.assign({
-        pageNo: this.localPagination.current,
-        pageSize: this.localPagination.pageSize
-      }, this.queryParam, this.filters)
+      const sqp = {}
+      const param = Object.assign(sqp, this.queryParam, this.isorter, this.filters)
+      param.pageNo = this.ipagination.current
+      param.pageSize = this.ipagination.pageSize
+      return filterObj(param)
     },
     onSelectChange (selectedRowKeys, selectionRows) {
       this.selectedRowKeys = selectedRowKeys
@@ -86,7 +88,7 @@ export const ListMixin = {
             that.loading = true
             deleteAction(that.url.deleteBatch, { ids: ids }).then((res) => {
               if (res.code === '00000') {
-                that.$message.success(res.message)
+                that.$message.success('删除成功')
                 that.loadData()
                 that.onClearSelected()
               } else {
@@ -106,8 +108,8 @@ export const ListMixin = {
       }
       const that = this
       deleteAction(that.url.delete, { id: id }).then((res) => {
-        if (res.success) {
-          that.$message.success(res.message)
+        if (res.code === '00000') {
+          that.$message.success('删除成功')
           that.loadData()
         } else {
           that.$message.warning(res.message)

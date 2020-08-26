@@ -20,6 +20,12 @@ public class CheckUtil {
         }
     }
 
+    public static void maxLength(String str, int length, String code, String message) {
+        if (str.trim().length() > length) {
+            fail(code, message);
+        }
+    }
+
     private static void fail(String code, String message) {
         throw new CheckException(code, message);
     }
