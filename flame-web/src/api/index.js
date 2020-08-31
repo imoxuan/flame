@@ -1,8 +1,8 @@
 // api接口的统一出口
 import org from '@/api/org'
-import company from '@/api/company'
+import dept from '@/api/dept'
 
 export {
   org as orgApi,
-  company as companyApi
+  dept as DeptApi
 }

@@ -74,7 +74,7 @@
     }
   ]
   export default {
-    name: 'Index',
+    name: 'OrgList',
     mixins: [ListMixin],
     components: {
       OrgModal

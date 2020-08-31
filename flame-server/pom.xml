@@ -3,8 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
-        <module>flame-system</module>
+        <module>flame-admin</module>
         <module>flame-common</module>
+        <module>flame-orm</module>
+        <module>flame-service</module>
+        <module>flame-model</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -24,7 +27,7 @@
         <druid-version>1.1.22</druid-version>
         <java.version>1.8</java.version>
         <mybatis-spring-boot.version>2.1.3</mybatis-spring-boot.version>
-        <mybatis-plus-boot.version>3.3.2</mybatis-plus-boot.version>
+        <mybatis-plus-boot.version>3.4.0</mybatis-plus-boot.version>
         <orika-core.version>1.5.4</orika-core.version>
     </properties>
 
