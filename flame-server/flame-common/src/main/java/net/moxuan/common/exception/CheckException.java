@@ -1,45 +1,23 @@
 package net.moxuan.common.exception;
 
+import lombok.Getter;
+
 /**
  * @author: moxuan
  * @description: 参数校验异常类
  */
+@Getter
 public class CheckException extends RuntimeException {
 
     private static final long serialVersionUID = 1272965823863008480L;
 
-    private String code;
+    private Integer code;
+    private String message;
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public CheckException() {
-    }
-
-    public CheckException(String message) {
-        super(message);
-    }
-
-    public CheckException(Throwable cause) {
-        super(cause);
-    }
-
-    public CheckException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public CheckException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
-
-    public CheckException(String code, String message) {
+    public CheckException(Integer code, String message) {
         super(message);
         this.code = code;
+        this.message = message;
     }
 
 }

@@ -3,11 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
-        <module>flame-admin</module>
+        <module>flame-core</module>
         <module>flame-common</module>
-        <module>flame-orm</module>
-        <module>flame-service</module>
-        <module>flame-model</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

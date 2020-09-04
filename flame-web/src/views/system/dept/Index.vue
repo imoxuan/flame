@@ -10,7 +10,7 @@
           <a-tree
             defaultExpandAll
             :showIcon="true"
-            :treeData="departTree">
+            :treeData="treeData">
             <a-icon slot="icon" type="cluster" />
           </a-tree>
         </a-card>
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+  import { getAction } from '@/utils/manage'
+  import { deptApi } from '@/api/index'
 const departTree = [{
   key: '6d35e179cd814e3299bd588ea7daed3f',
   title: '廊坊市人民防空办公室',
@@ -54,7 +56,25 @@ export default {
   name: 'DeptList',
   data () {
     return {
-      departTree: departTree
+      treeData: departTree,
+      url: {
+        data: deptApi.tree
+      }
+    }
+  },
+  created () {
+    this.loadData()
+  },
+  methods: {
+    loadData () {
+      // 加载 tree 数据
+      getAction(this.url.data, null).then((res) => {
+        if (res.code === 0) {
+          this.treeData = res.data
+        } else {
+          this.$message.error(res.message)
+        }
+      })
     }
   }
 }

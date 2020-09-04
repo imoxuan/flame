@@ -50,10 +50,6 @@
               {
                 required: true,
                 message: '请输入机构名称'
-              },
-              {
-                max: 30,
-                message: '长度超出 30 个字符'
               }
             ]
           },
@@ -164,7 +160,7 @@
               formData = Object.assign({}, diffData, { id: that.model.id })
             }
             httpAction(httpUrl, formData, method).then((res) => {
-              if (res.code === '00000') {
+              if (res.code === 0) {
                 that.$message.success('操作成功')
                 that.$emit('ok')
               } else {

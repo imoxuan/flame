@@ -1,7 +1,7 @@
 const dept = {
   add: '/sys/dept/add',
   edit: '/sys/dept/edit',
-  list: '/sys/dept/list',
+  tree: '/sys/dept/tree',
   deleteBatch: '/sys/dept/deleteBatch',
   delete: '/sys/dept/deleteById'
 }

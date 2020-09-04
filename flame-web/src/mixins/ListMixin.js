@@ -47,7 +47,7 @@ export const ListMixin = {
       const params = this.getQueryParams()
       this.loading = true
       getAction(this.url.list, params).then((res) => {
-        if (res.code === '00000') {
+        if (res.code === 0) {
           this.dataSource = res.data.records
           this.ipagination.total = res.data.total
         } else {
@@ -87,7 +87,7 @@ export const ListMixin = {
           onOk: function () {
             that.loading = true
             deleteAction(that.url.deleteBatch, { ids: ids }).then((res) => {
-              if (res.code === '00000') {
+              if (res.code === 0) {
                 that.$message.success('删除成功')
                 that.loadData()
                 that.onClearSelected()
@@ -108,7 +108,7 @@ export const ListMixin = {
       }
       const that = this
       deleteAction(that.url.delete, { id: id }).then((res) => {
-        if (res.code === '00000') {
+        if (res.code === 0) {
           that.$message.success('删除成功')
           that.loadData()
         } else {

@@ -4,5 +4,5 @@ import dept from '@/api/dept'
 
 export {
   org as orgApi,
-  dept as DeptApi
+  dept as deptApi
 }
