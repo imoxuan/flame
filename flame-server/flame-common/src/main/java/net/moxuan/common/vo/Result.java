@@ -1,7 +1,7 @@
 package net.moxuan.common.vo;
 
 import lombok.Data;
-import net.moxuan.common.enums.ResultCode;
+import net.moxuan.common.enums.ResultCodeEnum;
 
 import java.io.Serializable;
 
@@ -19,10 +19,10 @@ public class Result<T> implements Serializable {
     private T data;
 
     public Result() {
-        this(ResultCode.SUCCESS);
+        this(ResultCodeEnum.SUCCESS);
     }
-    public Result(ResultCode resultCode) {
-        this.code = resultCode.code();
+    public Result(ResultCodeEnum resultCodeEnum) {
+        this.code = resultCodeEnum.code();
     }
 
     public Result(Integer code, String message) {
@@ -46,8 +46,8 @@ public class Result<T> implements Serializable {
         return r;
     }
 
-    public static <T> Result<T> fail(ResultCode resultCode) {
-        return new Result<>(resultCode.code(), resultCode.message());
+    public static <T> Result<T> fail(ResultCodeEnum resultCodeEnum) {
+        return new Result<>(resultCodeEnum.code(), resultCodeEnum.desc());
     }
 
 }

@@ -8,16 +8,20 @@
       <a-col :md="6" :sm="24">
         <a-card :bordered="false">
           <a-tree
+            v-if="treeData.length"
+            :loading="loading"
+            :treeData="treeData"
             defaultExpandAll
-            :showIcon="true"
-            :treeData="treeData">
-            <a-icon slot="icon" type="cluster" />
+            showIcon
+            @select="select">
+            <a-icon slot="switcherIcon" type="down" />
+            <a-icon slot="icon" type="apartment" style="font-size: 12px;" />
           </a-tree>
         </a-card>
       </a-col>
       <a-col :md="18" :sm="24">
         <a-card :bordered="false">
-          nn
+          <dept-form />
         </a-card>
       </a-col>
     </a-row>
@@ -27,57 +31,45 @@
 <script>
   import { getAction } from '@/utils/manage'
   import { deptApi } from '@/api/index'
-const departTree = [{
-  key: '6d35e179cd814e3299bd588ea7daed3f',
-  title: '廊坊市人民防空办公室',
-  isLeaf: false,
-  slots: {
-    icon: 'icon'
-  },
-  children: [{
-    key: 'bbdb2d750b3c4944aa7f357db5738cfe',
-    title: '办领导',
-    isLeaf: true,
-    slots: {
-      icon: 'icon'
-    }
-  }, {
-    key: 'ba68db710fcc4d12b11a5b99a0b5e24c',
-    title: '秘书科',
-    isLeaf: true,
-    slots: {
-      icon: 'icon'
-    }
-  }
-  ]
-}
-]
-export default {
-  name: 'DeptList',
-  data () {
-    return {
-      treeData: departTree,
-      url: {
-        data: deptApi.tree
+  import DeptForm from '@/views/system/dept/DeptForm'
+  export default {
+    name: 'DeptList',
+    components: {
+      DeptForm
+    },
+    data () {
+      return {
+        loading: false,
+        treeData: [],
+        selectedNode: '',
+        url: {
+          data: deptApi.tree
+        }
+      }
+    },
+    created () {
+      this.loadData()
+    },
+    methods: {
+      loadData () {
+        this.loading = true
+        // 加载 tree 数据
+        getAction(this.url.data, {
+          orgId: '1298178547300851713'
+        }).then((res) => {
+          if (res.code === 0) {
+            this.treeData = res.data
+          } else {
+            this.$message.error(res.message)
+          }
+          this.loading = false
+        })
+      },
+      select (selectedKeys, e) {
+        this.selectedNode = e.selectedNodes[0].data.props
       }
     }
-  },
-  created () {
-    this.loadData()
-  },
-  methods: {
-    loadData () {
-      // 加载 tree 数据
-      getAction(this.url.data, null).then((res) => {
-        if (res.code === 0) {
-          this.treeData = res.data
-        } else {
-          this.$message.error(res.message)
-        }
-      })
-    }
   }
-}
 </script>
 
 <style>

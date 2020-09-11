@@ -1,5 +1,5 @@
 const path = require('path')
-const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin")
+const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, dir)

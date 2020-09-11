@@ -6,31 +6,23 @@ package net.moxuan.common.enums;
  */
 public enum LogTypeEnum {
     /**
-     * 登录日志
+     * 日志类型枚举
      */
-    LOGIN(1, "登录"),
-    OPERATION(2, "操作"),
-    CORN_JOB(3, "定时任务");
+    LOGIN(0, "登录");
 
-    /**
-     * 编码
-     */
-    private final int code;
-    /**
-     * 描述
-     */
-    private final String desc;
+    private Integer code;
+    private String desc;
 
-    LogTypeEnum(int code, String desc) {
+    LogTypeEnum(Integer code, String desc) {
         this.code = code;
         this.desc = desc;
     }
 
-    public int getCode() {
-        return code;
+    public Integer code() {
+        return this.code;
     }
 
-    public String getDesc() {
-        return desc;
+    public String desc() {
+        return this.desc;
     }
 }

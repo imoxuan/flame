@@ -11,10 +11,10 @@ public class CheckException extends RuntimeException {
 
     private static final long serialVersionUID = 1272965823863008480L;
 
-    private Integer code;
+    private int code;
     private String message;
 
-    public CheckException(Integer code, String message) {
+    public CheckException(int code, String message) {
         super(message);
         this.code = code;
         this.message = message;
