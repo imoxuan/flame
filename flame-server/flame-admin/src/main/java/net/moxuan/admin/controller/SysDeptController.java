@@ -3,7 +3,7 @@ package net.moxuan.admin.controller;
 import net.moxuan.admin.service.SysDeptService;
 import net.moxuan.common.annotation.AutoLog;
 import net.moxuan.common.constant.LogConst;
-import net.moxuan.common.dto.DeptTreeDTO;
+import net.moxuan.admin.dto.DeptTreeDTO;
 import net.moxuan.common.vo.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

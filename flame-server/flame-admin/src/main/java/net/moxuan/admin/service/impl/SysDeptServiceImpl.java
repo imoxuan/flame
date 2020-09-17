@@ -3,8 +3,8 @@ package net.moxuan.admin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import ma.glasnost.orika.MapperFactory;
 import net.moxuan.admin.service.SysDeptService;
-import net.moxuan.common.dto.DeptTreeDTO;
-import net.moxuan.common.dto.SysDeptDTO;
+import net.moxuan.admin.dto.DeptTreeDTO;
+import net.moxuan.admin.dto.SysDeptDTO;
 import net.moxuan.common.entity.SysDept;
 import net.moxuan.common.entity.SysOrg;
 import net.moxuan.common.enums.ResultCodeEnum;
@@ -54,7 +54,7 @@ public class SysDeptServiceImpl implements SysDeptService {
 
         // 校验名称
         int count = this.queryByName(dto.getName());
-        CheckUtil.notExits(count, ResultCodeEnum.DEPT_NAME_EXIST.code(), ResultCodeEnum.DEPT_NAME_EXIST.desc());
+        CheckUtil.notExits(count, ResultCodeEnum.NAME_EXIST.code(), ResultCodeEnum.NAME_EXIST.desc());
 
         SysDept dept = mapperFactory.getMapperFacade().map(dto, SysDept.class);
         dept.setGmtCreate(LocalDateTime.now());
@@ -116,7 +116,7 @@ public class SysDeptServiceImpl implements SysDeptService {
         }
     }
 
-    /** 
+    /**
      * 生成部门路径
      * 以下约定：
      * 一级路径 从1001 编号开始，依次递增

@@ -14,9 +14,8 @@ public enum ResultCodeEnum {
      * 参数校验(@valid)错误码统一为100000
      */
     SUCCESS(0, "成功"),
-    ORG_NAME_EXIST(1011, "机构已存在"),
-    ORG_CODE_EXIST(1012, "机构编码已存在"),
-    DEPT_NAME_EXIST(1013, "部门已存在");
+    NAME_EXIST(1011, "名称已存在"),
+    CODE_EXIST(1012, "编码已存在");
     /*ORG_NAME_MAX_LENGTH("A0102", "机构名称长度超过"),
     ORG_NAME_EXIST("A0103", "机构名称已存在"),
     ORG_CODE_EMPTY("A0104", "机构编码为空"),

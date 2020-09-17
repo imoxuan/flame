@@ -13,7 +13,7 @@
               <router-link to="/dept">部门管理</router-link>
             </a-menu-item>
             <a-menu-item key="4">
-              Bill
+              <router-link to="/dict">数据字典</router-link>
             </a-menu-item>
             <a-menu-item key="5">
             Alex

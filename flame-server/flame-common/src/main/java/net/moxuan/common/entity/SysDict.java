@@ -19,7 +19,7 @@ public class SysDict extends BaseEntity {
 
     private String code;
     private String name;
-    private String desc;
+    private String description;
 
     @TableField(value = "is_enabled")
     private Boolean enabled;

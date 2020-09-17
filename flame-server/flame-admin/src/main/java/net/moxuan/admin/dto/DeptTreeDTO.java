@@ -1,4 +1,4 @@
-package net.moxuan.common.dto;
+package net.moxuan.admin.dto;
 
 import lombok.Data;
 import net.moxuan.common.vo.NodeIcon;

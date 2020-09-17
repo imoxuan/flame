@@ -1,26 +1,23 @@
 <template>
   <a-spin :spinning="confirmLoading">
     <a-form :form="form" v-bind="formItemLayout">
-      <a-form-item label="机构名称">
-        <a-input v-decorator="['name', validatorRules.name]" auto-focus/>
+      <a-form-item label="名称">
+        <a-input v-decorator="['itemValue', validatorRules.itemValue]" auto-focus/>
       </a-form-item>
-      <a-form-item label="英文名称">
-        <a-input v-decorator="['enName', validatorRules.enName]"/>
+      <a-form-item label="数据值">
+        <a-input v-decorator="['itemKey', validatorRules.itemKey]"/>
       </a-form-item>
-      <a-form-item label="机构简称">
-        <a-input v-decorator="['shortName', validatorRules.shortName]"/>
+      <a-form-item label="描述">
+        <a-textarea />
       </a-form-item>
-      <a-form-item label="机构编码">
-        <a-input v-decorator="['code', validatorRules.code]"/>
+      <a-form-item label="排序">
+        <a-input-number v-decorator="['sortNo', validatorRules.sortNo]" />
       </a-form-item>
       <a-form-item label="是否启用">
         <a-radio-group v-decorator="['enabled', validatorRules.enabled]">
           <a-radio :value="true">启用</a-radio>
           <a-radio :value="false">停用</a-radio>
         </a-radio-group>
-      </a-form-item>
-      <a-form-item label="排序">
-        <a-input-number v-decorator="['sortNo', validatorRules.sortNo]" />
       </a-form-item>
     </a-form>
   </a-spin>
@@ -29,14 +26,16 @@
 <script>
   import { httpAction } from '@/utils/manage'
   import pick from 'lodash.pick'
-  import { orgApi } from '@/api/index'
+  import { dictItemApiApi } from '@/api/index'
   export default {
-    name: 'OrgForm',
+    name: 'DictForm',
     data () {
       return {
         form: this.$form.createForm(this),
         model: {},
         confirmLoading: false,
+        dictCode: '',
+        dictId: '',
         formItemLayout: {
           labelCol: {
             xs: { span: 24 },
@@ -48,43 +47,19 @@
           }
         },
         validatorRules: {
-          name: {
+          itemValue: {
             rules: [
               {
                 required: true,
-                message: '请输入机构名称'
+                message: '请输入名称'
               }
             ]
           },
-          enName: {
-            rules: [
-              {
-                required: false,
-                message: '请输入英文名称'
-              },
-              {
-                max: 60,
-                message: '长度超出 60 个字符'
-              }
-            ]
-          },
-          shortName: {
-            rules: [
-              {
-                required: false,
-                message: '请输入机构简称'
-              },
-              {
-                max: 16,
-                message: '长度超出 16 个字符'
-              }
-            ]
-          },
-          code: {
+          itemKey: {
             rules: [
               {
                 required: true,
-                message: '请输入机构编码'
+                message: '请输入编码'
               },
               {
                 max: 10,
@@ -117,20 +92,22 @@
           }
         },
         url: {
-          add: orgApi.add,
-          edit: orgApi.edit
+          add: dictItemApiApi.add,
+          edit: dictItemApiApi.edit
         }
       }
     },
     methods: {
-      add () {
+      add (dictId, dictCode) {
+        this.dictCode = dictCode
+        this.dictId = dictId
         this.edit({})
       },
       edit (record) {
         this.form.resetFields()
         this.model = Object.assign({}, record)
         this.$nextTick(() => {
-          this.form.setFieldsValue(pick(this.model, 'name', 'enName', 'shortName', 'code', 'enabled', 'sortNo'))
+          this.form.setFieldsValue(pick(this.model, 'itemValue', 'itemKey', 'description', 'sortNo', 'enabled'))
         })
       },
       submitForm () {

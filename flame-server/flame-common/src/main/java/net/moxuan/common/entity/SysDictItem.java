@@ -29,7 +29,7 @@ public class SysDictItem implements Serializable {
     private String itemKey;
     private String itemValue;
     private Integer sortNo;
-    private String desc;
+    private String description;
 
     @TableField(value = "is_enabled")
     private Boolean enabled;

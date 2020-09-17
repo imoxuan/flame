@@ -8,16 +8,16 @@
     @ok="handleOk"
     :okButtonProps="{ props: { disabled: disableSubmit }}"
     @cancel="handleCancel">
-    <org-form ref="modalForm" @ok="submitCallback"/>
+    <dict-form ref="modalForm" @ok="submitCallback"/>
   </a-modal>
 </template>
 
 <script>
-  import OrgForm from '@/views/system/org/OrgForm'
+  import DictForm from '@/views/system/dict/DictForm'
   export default {
-    name: 'OrgModal',
+    name: 'DictModal',
     components: {
-      OrgForm
+      DictForm
     },
     data () {
       return {

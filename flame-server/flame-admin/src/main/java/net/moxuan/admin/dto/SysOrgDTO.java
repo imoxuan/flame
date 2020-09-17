@@ -1,4 +1,4 @@
-package net.moxuan.common.dto;
+package net.moxuan.admin.dto;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
@@ -26,7 +26,7 @@ public class SysOrgDTO implements Serializable {
     private String enName;
     private String shortName;
 
-    @NotBlank(message = "机构编码为空")
+    @NotBlank(message = "编码为空")
     private String code;
 
     @Positive(message = "排序值必须是大于 0 的整数")

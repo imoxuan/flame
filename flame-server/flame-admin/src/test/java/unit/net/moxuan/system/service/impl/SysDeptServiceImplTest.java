@@ -2,7 +2,7 @@ package unit.net.moxuan.system.service.impl;
 
 import net.moxuan.admin.FlameApplication;
 import net.moxuan.admin.service.impl.SysDeptServiceImpl;
-import net.moxuan.common.dto.SysDeptDTO;
+import net.moxuan.admin.dto.SysDeptDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

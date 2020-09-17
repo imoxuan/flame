@@ -8,16 +8,16 @@
     @ok="handleOk"
     :okButtonProps="{ props: { disabled: disableSubmit }}"
     @cancel="handleCancel">
-    <org-form ref="modalForm" @ok="submitCallback"/>
+    <dict-item-form ref="modalForm" @ok="submitCallback"/>
   </a-modal>
 </template>
 
 <script>
-  import OrgForm from '@/views/system/org/OrgForm'
+  import DictItemForm from '@/views/system/dict/DictItemForm'
   export default {
-    name: 'OrgModal',
+    name: 'DictModal',
     components: {
-      OrgForm
+      DictItemForm
     },
     data () {
       return {
@@ -30,10 +30,10 @@
       }
     },
     methods: {
-      add () {
+      add (dictId, dictCode) {
         this.visible = true
         this.$nextTick(() => {
-          this.$refs.modalForm.add()
+          this.$refs.modalForm.add(dictId, dictCode)
         })
       },
       edit (record) {

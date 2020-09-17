@@ -2,6 +2,9 @@ package net.moxuan.common.util;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author: moxuan
  * @description: 自定义工具类
@@ -31,6 +34,33 @@ public class StringUtil {
             }
         }
         return true;
+    }
+
+    /**
+     * 字符串转list，去掉内容为空的 例如a,,c 转换之后a,c
+     *
+     * @param cs 要转换的字符串
+     * @param regex 分隔符
+     * @return List<String>
+     */
+    public static List<String> stringToList(String cs, String regex) {
+        String[] array = cs.split(regex);
+        List<String> list = new ArrayList<>();
+        for (int i = 0, len = array.length - 1; i <= len; i++) {
+            if (!isEmpty(array[i])) {
+                list.add(array[i]);
+            }
+        }
+        return list;
+    }
+    /**
+     * 字符串转list，去掉内容为空的 例如a,,c 转换之后a,c
+     *
+     * @param cs 要转换的字符串
+     * @return List<String>
+     */
+    public static List<String> stringToList(String cs) {
+        return stringToList(cs, ",");
     }
 
 }

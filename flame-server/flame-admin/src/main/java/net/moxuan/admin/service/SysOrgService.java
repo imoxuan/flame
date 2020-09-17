@@ -2,7 +2,7 @@ package net.moxuan.admin.service;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import net.moxuan.common.dto.SysOrgDTO;
+import net.moxuan.admin.dto.SysOrgDTO;
 import net.moxuan.common.entity.SysOrg;
 
 import java.util.List;
@@ -12,7 +12,6 @@ import java.util.List;
  * @description: 机构表 服务
  */
 public interface SysOrgService {
-
 
     /**
      * 根据 ids 删除

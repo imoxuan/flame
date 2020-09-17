@@ -1,7 +1,7 @@
 package net.moxuan.admin.service;
 
-import net.moxuan.common.dto.DeptTreeDTO;
-import net.moxuan.common.dto.SysDeptDTO;
+import net.moxuan.admin.dto.DeptTreeDTO;
+import net.moxuan.admin.dto.SysDeptDTO;
 
 import java.util.List;
 
