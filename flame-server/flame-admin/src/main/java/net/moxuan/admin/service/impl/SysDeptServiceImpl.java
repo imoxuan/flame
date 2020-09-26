@@ -73,7 +73,6 @@ public class SysDeptServiceImpl implements SysDeptService {
         // 当前
         SysOrg org = orgMapper.selectById(orgId);
 
-        // TODO 查询指定orgId, 字段，排序
         List<SysDept> deptList = deptMapper.selectList(generatorWrapper(null));
 
         List<DeptTreeDTO> dtos = new ArrayList<>();

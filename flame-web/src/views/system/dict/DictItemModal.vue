@@ -21,8 +21,7 @@
     },
     data () {
       return {
-        form: this.$form.createForm(this),
-        title: '',
+        title: '新增',
         confirmLoading: false,
         visible: false,
         maskClosable: false,
@@ -43,7 +42,6 @@
         })
       },
       close () {
-        // this.handleReset()
         this.$emit('close')
         this.visible = false
       },
@@ -54,6 +52,7 @@
         this.close()
       },
       handleReset () {
+        console.log('good change')
         this.form.resetFields()
       },
       submitCallback () {

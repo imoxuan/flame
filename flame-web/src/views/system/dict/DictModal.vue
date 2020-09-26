@@ -53,9 +53,6 @@
       handleCancel () {
         this.close()
       },
-      handleReset () {
-        this.form.resetFields()
-      },
       submitCallback () {
         this.$emit('ok')
         this.visible = false

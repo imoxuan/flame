@@ -13,10 +13,10 @@
               <router-link to="/dept">部门管理</router-link>
             </a-menu-item>
             <a-menu-item key="4">
-              <router-link to="/dict">数据字典</router-link>
+              <router-link to="/user">用户管理</router-link>
             </a-menu-item>
             <a-menu-item key="5">
-            Alex
+              <router-link to="/dict">数据字典</router-link>
             </a-menu-item>
           </a-sub-menu>
           <a-sub-menu key="sub2">

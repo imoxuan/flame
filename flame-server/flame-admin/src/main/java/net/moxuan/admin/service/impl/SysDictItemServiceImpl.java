@@ -63,7 +63,7 @@ public class SysDictItemServiceImpl implements SysDictItemService {
     public List<SysDictItemDTO> queryList(boolean enabled, SysDictItemDTO dto) {
         List<SysDictItem> list = dictItemManager.queryList(enabled, mapperFactory.getMapperFacade().map(dto, SysDictItem.class));
         if (list == null || list.isEmpty()) {
-            return new ArrayList<>();
+            list = new ArrayList<>();
         }
         return mapperFactory.getMapperFacade().mapAsList(list, SysDictItemDTO.class);
     }

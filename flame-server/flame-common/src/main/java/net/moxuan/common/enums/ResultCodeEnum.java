@@ -4,7 +4,7 @@ package net.moxuan.common.enums;
  * @author: moxuan
  * @description:
  */
-public enum ResultCodeEnum {
+public enum ResultCodeEnum implements EnumModel {
     /**
      * 错误代码及描述, 格式：A-BB-CCC
      * A: 错误来源 1/2/3 1用户 2 系统 3 第三方
@@ -30,10 +30,12 @@ public enum ResultCodeEnum {
         this.desc = desc;
     }
 
-    public Integer code() {
+    @Override
+    public int code() {
         return this.code;
     }
 
+    @Override
     public String desc() {
         return this.desc;
     }

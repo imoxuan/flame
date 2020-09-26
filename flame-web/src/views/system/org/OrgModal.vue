@@ -21,7 +21,6 @@
     },
     data () {
       return {
-        form: this.$form.createForm(this),
         title: '',
         confirmLoading: false,
         visible: false,
@@ -43,7 +42,6 @@
         })
       },
       close () {
-        // this.handleReset()
         this.$emit('close')
         this.visible = false
       },
@@ -52,9 +50,6 @@
       },
       handleCancel () {
         this.close()
-      },
-      handleReset () {
-        this.form.resetFields()
       },
       submitCallback () {
         this.$emit('ok')

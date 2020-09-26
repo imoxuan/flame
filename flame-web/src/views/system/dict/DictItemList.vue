@@ -2,7 +2,7 @@
   <a-card :bordered="false">
     <!-- 抽屉 -->
     <a-drawer
-      title="字典列表"
+      title="字典项列表"
       @close="onClose"
       :visible="drawerVisible"
       :width="screenWidth"
@@ -11,15 +11,23 @@
         <a-button type="primary" icon="plus" @click="handleAdd">新增</a-button>
       </div>
       <a-table
+        bordered
         size="middle"
         rowKey="id"
         :loading="loading"
         :columns="columns"
         :data-source="dataSource"
       >
+        <template slot="action" slot-scope="text, record">
+          <a @click="handleEdit(record)">编辑</a>
+          <a-divider type="vertical" />
+          <a-popconfirm title="确定删除吗?" @confirm="() => handleDelete(record.id)">
+            <a>删除</a>
+          </a-popconfirm>
+        </template>
 
       </a-table>
-      <dict-item-modal v-if="visible" ref="modal" @close="changeModalVisible" @ok="modalFormOk"></dict-item-modal>
+      <dict-item-modal ref="itemModal" @ok="modalFormOk"></dict-item-modal>
     </a-drawer>
   </a-card>
 </template>
@@ -41,6 +49,12 @@
     {
       title: '排序',
       dataIndex: 'sortNo'
+    },
+    {
+      title: '操作',
+      width: 200,
+      dataIndex: 'action',
+      scopedSlots: { customRender: 'action' }
     }
   ]
 
@@ -53,6 +67,7 @@
     data () {
       return {
         drawerVisible: false,
+        visible: true,
         screenWidth: 600,
         columns: columns,
         dictCode: '',
@@ -66,7 +81,15 @@
     },
     methods: {
       handleAdd () {
-        this.$refs.modal.add(this.dictId, this.dictCode)
+        this.$refs.itemModal.add(this.dictId, this.dictCode)
+      },
+      handleEdit: function (record) {
+        this.visible = true
+        this.$nextTick(() => {
+          this.$refs.itemModal.edit(record)
+          this.$refs.itemModal.title = '编辑'
+          this.$refs.itemModal.disableSubmit = false
+        })
       },
       edit (record) {
         this.dictCode = record.code
@@ -79,11 +102,11 @@
       },
       loadData (record) {
         const params = this.getQueryParams()
-        params.dictCode = record.code
+        // params.dictCode = record.code
         this.loading = true
         getAction(this.url.list, params).then((res) => {
           if (res.code === 0) {
-            this.dataSource = res.data.records
+            this.dataSource = res.data
           }
         }).finally(() => {
           this.loading = false

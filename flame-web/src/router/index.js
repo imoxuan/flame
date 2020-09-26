@@ -6,6 +6,7 @@ import Home from '@/views/Home'
 import Org from '@/views/system/org/Index'
 import Dept from '@/views/system/dept/Index'
 import Dict from '@/views/system/dict/Index'
+import User from '@/views/system/user/Index'
 
 // hack router push callback
 const originalPush = VueRouter.prototype.push
@@ -41,6 +42,11 @@ const routes = [
         path: '/dict',
         name: 'dict',
         component: Dict
+      },
+      {
+        path: '/user',
+        name: 'user',
+        component: User
       }
     ]
   },

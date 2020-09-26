@@ -23,7 +23,7 @@ public class SysDictItemManager {
 
     public int queryByCode(String code) {
         QueryWrapper<SysDictItem> wrapper = new QueryWrapper<>();
-        wrapper.eq("dict_code", code);
+        wrapper.eq("item_key", code);
         return dictItemMapper.selectCount(wrapper);
     }
 

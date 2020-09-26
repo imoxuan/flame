@@ -26,7 +26,7 @@
 <script>
   import { httpAction } from '@/utils/manage'
   import pick from 'lodash.pick'
-  import { dictItemApiApi } from '@/api/index'
+  import { dictItemApi } from '@/api/index'
   export default {
     name: 'DictForm',
     data () {
@@ -92,8 +92,8 @@
           }
         },
         url: {
-          add: dictItemApiApi.add,
-          edit: dictItemApiApi.edit
+          add: dictItemApi.add,
+          edit: dictItemApi.edit
         }
       }
     },
@@ -122,9 +122,11 @@
             let method
             let formData
             if (!that.model.id) {
-              httpUrl += this.url.add
+              httpUrl += that.url.add
               method = 'post'
               formData = Object.assign(that.model, values)
+              formData.dictCode = that.dictCode
+              formData.dictId = that.dictId
             } else {
               httpUrl += that.url.edit
               method = 'put'

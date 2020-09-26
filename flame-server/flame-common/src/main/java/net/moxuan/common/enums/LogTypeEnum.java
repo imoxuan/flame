@@ -4,7 +4,7 @@ package net.moxuan.common.enums;
  * @author: moxuan
  * @description:
  */
-public enum LogTypeEnum {
+public enum LogTypeEnum implements EnumModel {
     /**
      * 日志类型枚举
      */
@@ -18,10 +18,12 @@ public enum LogTypeEnum {
         this.desc = desc;
     }
 
-    public Integer code() {
+    @Override
+    public int code() {
         return this.code;
     }
 
+    @Override
     public String desc() {
         return this.desc;
     }
