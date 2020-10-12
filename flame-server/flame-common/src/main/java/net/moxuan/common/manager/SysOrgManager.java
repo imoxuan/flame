@@ -29,7 +29,6 @@ public class SysOrgManager {
         return orgMapper.deleteById(id);
     }
 
-
     public IPage<SysOrg> queryPage(Page<SysOrg> page, SysOrg org) {
         return orgMapper.selectPage(page, generatorWrapper(org));
     }

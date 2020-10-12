@@ -23,4 +23,5 @@ public class SysDict extends BaseEntity {
 
     @TableField(value = "is_enabled")
     private Boolean enabled;
+    private Long orgId;
 }

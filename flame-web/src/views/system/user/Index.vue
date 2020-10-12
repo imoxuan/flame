@@ -28,35 +28,63 @@
         </a-popconfirm>
       </template>
     </a-table>
-    <org-modal v-if="visible" ref="modal" @close="changeModalVisible" @ok="modalFormOk" />
+    <user-modal v-if="visible" ref="modal" @close="changeModalVisible" @ok="modalFormOk" />
   </a-card>
 </template>
 
 <script>
-  import OrgModal from '@/views/system/org/OrgModal'
+  import UserModal from '@/views/system/user/UserModal'
   import { ListMixin } from '@/mixins/ListMixin'
-  import { orgApi } from '@/api/index'
+  import { userApi } from '@/api/index'
   const columns = [
     {
-      title: '名称',
+      title: '登录名',
+      dataIndex: 'loginName'
+    },
+    {
+      title: '姓名',
       dataIndex: 'name'
     },
     {
-      title: '英文名称',
-      dataIndex: 'enName'
+      title: '性别',
+      dataIndex: 'gender'
     },
     {
-      title: '简称',
-      dataIndex: 'shortName'
+      title: '出生日期',
+      dataIndex: 'birthday'
     },
     {
-      title: '编码',
-      dataIndex: 'code'
+      title: '手机号',
+      dataIndex: 'mobile'
+    },
+    {
+      title: '邮箱',
+      dataIndex: 'email'
+    },
+    {
+      title: '入职日期',
+      width: 100,
+      dataIndex: 'workStartDate'
     },
     {
       title: '排序',
       width: 100,
       dataIndex: 'sortNo'
+    },
+    {
+      title: '人员类型',
+      width: 100,
+      dataIndex: 'userType'
+    },
+    {
+      title: '人员状态',
+      width: 100,
+      dataIndex: 'state'
+    },
+    {
+      title: '账号状态',
+      width: 100,
+      dataIndex: 'accountState'
     },
     {
       title: '是否启用',
@@ -77,16 +105,16 @@
     name: 'OrgList',
     mixins: [ListMixin],
     components: {
-      OrgModal
+      UserModal
     },
     data () {
       return {
         visible: false,
         columns: columns,
         url: {
-          list: orgApi.list,
-          deleteBatch: orgApi.deleteBatch,
-          delete: orgApi.delete
+          list: userApi.list,
+          deleteBatch: userApi.deleteBatch,
+          delete: userApi.delete
         }
       }
     }
