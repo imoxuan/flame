@@ -38,7 +38,7 @@
   const columns = [
     {
       title: '名称',
-      dataIndex: 'name'
+      dataIndex: 'dictName'
     },
     {
       title: '编码',

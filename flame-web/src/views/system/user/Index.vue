@@ -43,7 +43,7 @@
     },
     {
       title: '姓名',
-      dataIndex: 'name'
+      dataIndex: 'cname'
     },
     {
       title: '性别',
