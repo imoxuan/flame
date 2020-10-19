@@ -26,7 +26,7 @@ public class SysDeptManager {
 
     public int queryCountByName(String orgId, String name) {
         QueryWrapper<SysDept> wrapper = new QueryWrapper<>();
-        wrapper.eq("name", name).eq("org_id", orgId);
+        wrapper.eq("dept_name", name).eq("org_id", orgId);
         return deptMapper.selectCount(wrapper);
     }
 
@@ -42,8 +42,8 @@ public class SysDeptManager {
 
     private QueryWrapper<SysDept> generatorWrapper(SysDept dept) {
         QueryWrapper<SysDept> wrapper = new QueryWrapper<>(dept);
-        wrapper.select("id", "name", "code", "sort_no", "path", "parent_id as pid", "org_id", "is_enabled as enabled");
-        wrapper.orderByAsc("path", "sort_no", "name");
+        wrapper.select("id", "dept_name", "code", "sort_no", "path", "parent_id as pid", "org_id", "is_enabled as enabled");
+        wrapper.orderByAsc("path", "sort_no", "dept_name");
         return wrapper;
     }
 

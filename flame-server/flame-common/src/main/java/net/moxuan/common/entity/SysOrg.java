@@ -18,7 +18,7 @@ public class SysOrg extends BaseEntity {
 
     private static final long serialVersionUID = -8166945473936393885L;
 
-    private String name;
+    private String orgName;
     private String enName;
     private String shortName;
     private String code;

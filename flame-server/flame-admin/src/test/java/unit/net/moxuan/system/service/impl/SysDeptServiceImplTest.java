@@ -25,7 +25,7 @@ public class SysDeptServiceImplTest {
         SysDeptDTO deptDTO = new SysDeptDTO();
         deptDTO.setOrgId(orgId);
         deptDTO.setPid(1302946997892943873L);
-        deptDTO.setName("部1-1");
+        deptDTO.setDeptName("部1-1");
         deptDTO.setCode("B1-1");
         deptDTO.setSortNo(1);
         deptDTO.setPath("10011001");

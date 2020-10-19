@@ -18,7 +18,7 @@ public class SysDict extends BaseEntity {
     private static final long serialVersionUID = -6580174110190453519L;
 
     private String code;
-    private String name;
+    private String dictName;
     private String description;
 
     @TableField(value = "is_enabled")

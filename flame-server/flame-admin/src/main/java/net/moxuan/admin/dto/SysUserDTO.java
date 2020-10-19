@@ -15,7 +15,7 @@ public class SysUserDTO implements Serializable {
     private static final long serialVersionUID = 5765969200759277383L;
 
     private String id;
-    private String name;
+    private String cname;
     private String loginName;
     private String userNo;
     private String password;
@@ -23,7 +23,7 @@ public class SysUserDTO implements Serializable {
     private String nickName;
     private Integer sortNo;
     private Boolean internal;
-    private Boolean virtual;
+    private Boolean virtualized;
 
     private Boolean admin;
 

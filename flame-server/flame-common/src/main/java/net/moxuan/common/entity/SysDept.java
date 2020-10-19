@@ -17,7 +17,7 @@ import lombok.ToString;
 public class SysDept extends BaseEntity {
     private static final long serialVersionUID = 6507964442433157086L;
 
-    private String name;
+    private String deptName;
     private String code;
     private Integer sortNo;
 

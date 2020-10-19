@@ -77,7 +77,7 @@ public class SysOrgServiceImpl implements SysOrgService {
     @Override
     public long save(SysOrgDTO dto) {
         // 校验名称、编码是否已存在
-        int count = this.queryByName(dto.getName().trim());
+        int count = this.queryByName(dto.getOrgName().trim());
         CheckUtil.notExits(count, ResultCodeEnum.NAME_EXIST.code(), ResultCodeEnum.NAME_EXIST.desc());
 
         count = this.queryByCode(dto.getCode().trim());

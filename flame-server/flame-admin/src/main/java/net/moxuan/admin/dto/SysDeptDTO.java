@@ -14,7 +14,7 @@ public class SysDeptDTO implements Serializable {
     private static final long serialVersionUID = 5486329093163719885L;
 
     private String id;
-    private String name;
+    private String deptName;
     private String code;
     private Integer sortNo;
     private String path;

@@ -23,7 +23,7 @@ public interface SysDeptService {
      * 保存部门信息
      *
      * @param dto 部门信息
-     * @return long 执行条数
+     * @return int 执行条数
      */
     int save(SysDeptDTO dto);
 

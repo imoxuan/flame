@@ -45,11 +45,11 @@ public class SysUserManager {
 
     private QueryWrapper<SysUser> generatorWrapper(SysUser user) {
         QueryWrapper<SysUser> wrapper = new QueryWrapper<>(user);
-        wrapper.select("id", "name", "login_name", "user_no", "nick_name", "sort_no", "is_internal as internal",
-                "is_virtual as virtual", "is_admin as admin", "gender", "state", "birthday", "account_state",
+        wrapper.select("id", "cname", "login_name", "user_no", "nick_name", "sort_no", "is_internal as internal",
+                "is_virtual as virtualized", "is_admin as admin", "gender", "state", "birthday", "account_state",
                 "work_start_date", "user_type", "inside_tel", "outside_tel", "office", "mobile", "email", "org_id",
                 "is_enabled as enabled");
-        wrapper.orderByAsc("sort_no", "name");
+        wrapper.orderByAsc("sort_no", "cname");
         return wrapper;
     }
 }

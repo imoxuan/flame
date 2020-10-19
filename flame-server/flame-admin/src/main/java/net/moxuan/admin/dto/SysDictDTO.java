@@ -22,7 +22,7 @@ public class SysDictDTO implements Serializable {
 
     @NotBlank(message = "名称为空")
     @Length(max = 30, message = "名称长度超过 {max}")
-    private String name;
+    private String dictName;
 
     private String description;
 

@@ -39,8 +39,8 @@ public class SysDictManager {
 
     private QueryWrapper<SysDict> generatorWrapper(SysDict dict) {
         QueryWrapper<SysDict> wrapper = new QueryWrapper<>(dict);
-        wrapper.select("id", "code", "name", "description", "is_enabled as enabled");
-        wrapper.orderByAsc("name");
+        wrapper.select("id", "code", "dict_name", "description", "is_enabled as enabled");
+        wrapper.orderByAsc("dict_name");
         return wrapper;
     }
 

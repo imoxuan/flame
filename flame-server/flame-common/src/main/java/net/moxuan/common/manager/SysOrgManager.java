@@ -44,7 +44,7 @@ public class SysOrgManager {
     }
     public int queryByName(String name) {
         QueryWrapper<SysOrg> wrapper = new QueryWrapper<>();
-        wrapper.eq("name", name);
+        wrapper.eq("org_name", name);
         return orgMapper.selectCount(wrapper);
     }
 
@@ -61,8 +61,8 @@ public class SysOrgManager {
 
     private QueryWrapper<SysOrg> generatorWrapper(SysOrg org) {
         QueryWrapper<SysOrg> wrapper = new QueryWrapper<>(org);
-        wrapper.select("id", "name", "short_name", "sort_no", "code", "is_enabled as enabled");
-        wrapper.orderByAsc("sort_no", "name");
+        wrapper.select("id", "org_name", "short_name", "sort_no", "code", "is_enabled as enabled");
+        wrapper.orderByAsc("sort_no", "org_name");
         return wrapper;
     }
 }

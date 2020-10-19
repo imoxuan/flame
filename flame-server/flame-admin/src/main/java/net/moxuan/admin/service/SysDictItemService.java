@@ -49,7 +49,8 @@ public interface SysDictItemService {
      * 查询全部字典信息
      *
      * @param enabled 是否包含不可用的
-     * @return IPage<SysDictDTO> 分页结果
+     * @param dto 字典项内容
+     * @return IPage<SysDictItemDTO> 分页结果
      */
     List<SysDictItemDTO> queryList(boolean enabled, SysDictItemDTO dto);
 

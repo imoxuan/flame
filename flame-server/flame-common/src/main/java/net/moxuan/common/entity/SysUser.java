@@ -32,7 +32,7 @@ public class SysUser extends BaseEntity {
     private Boolean internal;
 
     @TableField(value = "is_virtual")
-    private Boolean virtual;
+    private Boolean virtualized;
 
     @TableField(value = "is_admin")
     private Boolean admin;

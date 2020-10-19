@@ -53,7 +53,7 @@ public class SysDeptServiceImpl implements SysDeptService {
         //SysDeptValid.valid(dto);
 
         // 校验名称
-        int count = this.queryByName(dto.getName());
+        int count = this.queryByName(dto.getDeptName());
         CheckUtil.notExits(count, ResultCodeEnum.NAME_EXIST.code(), ResultCodeEnum.NAME_EXIST.desc());
 
         SysDept dept = mapperFactory.getMapperFacade().map(dto, SysDept.class);
@@ -79,7 +79,7 @@ public class SysDeptServiceImpl implements SysDeptService {
 
         DeptTreeDTO dto = new DeptTreeDTO();
         dto.setKey(org.getId().toString());
-        dto.setTitle(org.getName());
+        dto.setTitle(org.getOrgName());
         dto.setPath(null);
         dto.setLevel(1);
         dtos.add(dto);
@@ -103,7 +103,7 @@ public class SysDeptServiceImpl implements SysDeptService {
             newDeptList.forEach(dept -> {
                 DeptTreeDTO dto = new DeptTreeDTO();
                 dto.setKey(dept.getId().toString());
-                dto.setTitle(dept.getName());
+                dto.setTitle(dept.getDeptName());
                 dto.setPath(dept.getPath());
                 dto.setLevel(level + 1);
                 dto.setSlots(new NodeIcon().setIcon("icon"));
@@ -144,8 +144,8 @@ public class SysDeptServiceImpl implements SysDeptService {
 
     private QueryWrapper<SysDept> generatorWrapper(SysDept dept) {
         QueryWrapper<SysDept> wrapper = new QueryWrapper<>(dept);
-        wrapper.select("id", "name", "code", "sort_no", "path", "parent_id as pid", "org_id", "is_enabled as enabled");
-        wrapper.orderByAsc("path", "sort_no", "name");
+        wrapper.select("id", "dept_name", "code", "sort_no", "path", "parent_id as pid", "org_id", "is_enabled as enabled");
+        wrapper.orderByAsc("path", "sort_no", "dept_name");
         return wrapper;
     }
 }

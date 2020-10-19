@@ -21,7 +21,7 @@ public class SysOrgDTO implements Serializable {
 
     @NotBlank(message = "机构名称为空")
     @Length(max = 30, message = "机构名称长度超过 {max}")
-    private String name;
+    private String orgName;
 
     private String enName;
     private String shortName;
