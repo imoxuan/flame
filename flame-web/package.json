@@ -15,7 +15,7 @@
     "lodash.pick": "4.4.0",
     "moment": "latest",
     "nprogress": "0.2.0",
-    "qs": "6.9.4",
+    "qs": "6.9.7",
     "store": "2.0.12",
     "vue": "2.6.11",
     "vue-router": "3.2.0",
